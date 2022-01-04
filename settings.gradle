@@ -1,0 +1,3 @@
+rootProject.name = "ZRunFix"
+include ':app'
+include ':RunFix'
