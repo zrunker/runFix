@@ -23,6 +23,7 @@ import dalvik.system.PathClassLoader;
 /**
  * @program: RunFix
  * @description: So库修复类
+ * 1. So库补丁包，需要放在 armeabi，armeabi-v7a，x86，mips，arm64- v8a，mips64，x86_64文件夹下
  * @author: zoufengli01
  * @create: 2021-11-05 14:03
  **/

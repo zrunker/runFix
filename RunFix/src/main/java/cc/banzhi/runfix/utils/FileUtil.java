@@ -11,6 +11,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigInteger;
 import java.security.MessageDigest;
+import java.util.Enumeration;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 import cc.banzhi.runfix.Config;
 
@@ -194,6 +197,52 @@ public class FileUtil {
                                 newPath + File.separator + file);
                     }
                 }
+            }
+        }
+    }
+
+    /**
+     * 解压文件
+     *
+     * @param srcPath  待解压路径
+     * @param destPath 目标路径
+     */
+    private void unZip(String srcPath, String destPath) throws IOException {
+        File file = new File(srcPath);
+        if (!file.exists()) {
+            throw new RuntimeException(srcPath + "所指文件不存在");
+        }
+        ZipFile zf = new ZipFile(file);
+        Enumeration<?> entries = zf.entries();
+        ZipEntry entry;
+        while (entries.hasMoreElements()) {
+            entry = (ZipEntry) entries.nextElement();
+            System.out.println("解压" + entry.getName());
+            if (entry.isDirectory()) {
+                String dirPath = destPath + File.separator + entry.getName();
+                File dir = new File(dirPath);
+                dir.mkdirs();
+            } else {
+                // 表示文件
+                File f = new File(destPath + File.separator + entry.getName());
+                if (!f.exists()) {
+                    String dirs = f.getParent();
+                    if (dirs != null) {
+                        File parentDir = new File(dirs);
+                        parentDir.mkdirs();
+                    }
+                }
+                f.createNewFile();
+                // 将压缩文件内容写入到这个文件中
+                InputStream is = zf.getInputStream(entry);
+                FileOutputStream fos = new FileOutputStream(f);
+                int count;
+                byte[] buf = new byte[8192];
+                while ((count = is.read(buf)) != -1) {
+                    fos.write(buf, 0, count);
+                }
+                is.close();
+                fos.close();
             }
         }
     }

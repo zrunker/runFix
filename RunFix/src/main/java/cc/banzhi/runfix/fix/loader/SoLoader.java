@@ -56,8 +56,7 @@ public class SoLoader implements ILoader {
      * @param soDirs  保存目录集合
      */
     private void traverseDirFile(File dirFile,
-                                 List<String> cpuAbis,
-                                 Set<File> soDirs) {
+                                 List<String> cpuAbis, Set<File> soDirs) {
         if (dirFile.exists() && dirFile.isDirectory()) {
             File[] files = dirFile.listFiles();
             if (files != null && files.length > 0) {
