@@ -20,9 +20,9 @@ import java.util.Set;
  **/
 public class DexLoader implements ILoader {
     private static final String DEX_SUFFIX = ".dex";
-    private static final String APK_SUFFIX = ".apk";
+//    private static final String APK_SUFFIX = ".apk";
     private static final String JAR_SUFFIX = ".jar";
-    private static final String ZIP_SUFFIX = ".zip";
+//    private static final String ZIP_SUFFIX = ".zip";
 
     @Override
     public Set<File> load(@NonNull Context context, String dirPath) {
@@ -47,9 +47,9 @@ public class DexLoader implements ILoader {
                         if (item != null && item.exists() && item.isFile()) {
                             String name = item.getName().toLowerCase(Locale.ROOT);
                             if (name.endsWith(DEX_SUFFIX)
-                                    || name.endsWith(APK_SUFFIX)
-                                    || name.endsWith(JAR_SUFFIX)
-                                    || name.endsWith(ZIP_SUFFIX)) {
+//                                    || name.endsWith(APK_SUFFIX)
+//                                    || name.endsWith(ZIP_SUFFIX)
+                                    || name.endsWith(JAR_SUFFIX)) {
                                 dexFiles.add(item);
                             }
                         }

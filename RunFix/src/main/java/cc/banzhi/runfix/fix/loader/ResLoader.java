@@ -20,7 +20,6 @@ import cc.banzhi.runfix.utils.FileUtil;
  **/
 public class ResLoader implements ILoader {
     private static final String APK_SUFFIX = ".apk";
-    private static final String ZIP_SUFFIX = ".zip";
 
     @Override
     public Set<File> load(@NonNull Context context, String dirPath) {
@@ -44,8 +43,7 @@ public class ResLoader implements ILoader {
                     for (File item : files) {
                         if (item != null && item.exists() && item.isFile()) {
                             String name = item.getName().toLowerCase(Locale.ROOT);
-                            if (name.endsWith(APK_SUFFIX)
-                                    || name.endsWith(ZIP_SUFFIX)) {
+                            if (name.endsWith(APK_SUFFIX)) {
                                 resDirs.add(item);
                             }
                         }

@@ -207,7 +207,7 @@ public class FileUtil {
      * @param srcPath  待解压路径
      * @param destPath 目标路径
      */
-    private void unZip(String srcPath, String destPath) throws IOException {
+    public static void unZip(String srcPath, String destPath) throws IOException {
         File file = new File(srcPath);
         if (!file.exists()) {
             throw new RuntimeException(srcPath + "所指文件不存在");
