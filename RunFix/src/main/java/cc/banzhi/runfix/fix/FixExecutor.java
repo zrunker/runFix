@@ -19,7 +19,7 @@ public class FixExecutor implements IRunFix {
         new DexFix().fix(context, dirPath, callBack);
         // 修复SO
         new SoFix().fix(context, dirPath, callBack);
-
-//        new ResFix().fix(context, dirPath, callBack);
+        // 修复资源
+        new ResFix().fix(context, dirPath, callBack);
     }
 }
