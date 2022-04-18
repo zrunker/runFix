@@ -9,6 +9,7 @@
 ## 修复类文件【DEX文件】：
 
 **如何打DEX文件包？**
+
 如果工程遇到属于类文件代码导致的BUG，那么就需要修复类文件，并将修复之后的类文件打包成DEX文件，上传至之前设置好的云平台，那么如何打包成DEX文件呢？
 
 ![image](https://user-images.githubusercontent.com/27541306/163747829-e6adc2fe-250b-466f-98e9-69ca44b4e2d5.png)
@@ -21,7 +22,9 @@
 ![image](https://user-images.githubusercontent.com/27541306/163748060-1faca24d-e42b-4252-836c-8acf2c7bd8a2.png)
 
 找到编辑后的class文件，build/intermediates/javac/debug/classes/....不同AS版本可能目录不一致。
+
 将编辑之后的class文件，连同目录一起复制到一个单独的目录下。
+
 例如：修复的文件是在com.baidu.runFix.MainActivity，那么就将com文件目录拷贝到一个单独目录用于打包DEX文件。
 ![image](https://user-images.githubusercontent.com/27541306/163748102-49896957-aab6-44d8-8252-46405279e08d.png)
 
@@ -32,6 +35,7 @@
 ![image](https://user-images.githubusercontent.com/27541306/163748192-8e61c7a9-f032-4def-806e-97ad8409a785.png)
 
 找到Android SDK目录，该目录中将会有dx工具，一般位置是/Users/zoufengli01/Library/Android/sdk/build-tools/28.0.3/dx。
+
 使用shell终端，执行dx命令将会生成DEX文件：
 ```
 /Users/zoufengli01/Library/Android/sdk/build-tools/28.0.3/dx --dex --output=/Users/zoufengli01/Desktop/fix/classes-fix-1.dex /Users/zoufengli01/Desktop/fix
@@ -85,6 +89,7 @@ target_link_libraries( # Specifies the target library.
 ![image](https://user-images.githubusercontent.com/27541306/163748396-413ea034-6359-490c-b104-e93024d42d3a.png)
 
 其中native-lib.cpp便是需要编译的c++文件。
+
 编译好代码之后，保存，点击编译按钮，便会自动生成相应CPU架构SO库：
 ![image](https://user-images.githubusercontent.com/27541306/163748424-af41c343-5133-4e47-89cc-8f37053690a8.png)
 
