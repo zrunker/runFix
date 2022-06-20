@@ -1,5 +1,6 @@
 package cc.banzhi.runfix.fix;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
@@ -75,7 +76,7 @@ public class ResFix implements IRunFix {
      */
     private AssetManager createAssetManager(String dirPath)
             throws InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
-        AssetManager assetManager = AssetManager.class.getConstructor(new Class[0]).newInstance(new Object[0]);
+        AssetManager assetManager = AssetManager.class.getDeclaredConstructor(new Class[0]).newInstance();
         Method method = assetManager.getClass().getDeclaredMethod("addAssetPathInternal", String.class, Boolean.class, Boolean.class);
         method.setAccessible(true);
         method.invoke(assetManager, dirPath, false, false);
@@ -184,9 +185,11 @@ public class ResFix implements IRunFix {
             field1.setAccessible(true);
             Object resourcesImpl = field1.get(resources);
 
-            Field field2 = resourcesImpl.getClass().getDeclaredField("mAssets");
-            field2.setAccessible(true);
-            field2.set(resourcesImpl, assetM);
+            if (resourcesImpl != null) {
+                Field field2 = resourcesImpl.getClass().getDeclaredField("mAssets");
+                field2.setAccessible(true);
+                field2.set(resourcesImpl, assetM);
+            }
         } else {
             Field field1 = resources.getClass().getDeclaredField("mAssets");
             field1.setAccessible(true);

@@ -58,7 +58,7 @@ public class RunFix {
     /**
      * URL修复
      *
-     * @param url 待修复包网络URL
+     * @param url 待修复包网络URL，默认get方式进行下载
      */
     public void fixUrl(String url) {
         if (!TextUtils.isEmpty(url)) {
