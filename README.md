@@ -154,7 +154,7 @@ classes-fix-1.dex就是打包之后的DEX文件，也是需要上传至云端的
 
 **如何打包SO库？**
 
-将JNI代码编译成So库，一般情况下都是使用NDK进行编译，通常是直接使用NDK执行脚本命令，例如：音视频播放器【NA】一文中是使用Shell命令进行编译。
+将JNI代码编译成So库，一般情况下都是使用NDK进行编译，通常是直接使用NDK执行脚本命令，例如：[ijkplayer-android编译支持全音视频格式](http://ibooker.cc/article/355/detail) 一文中是使用Shell命令进行编译。
 
 另外如果是自己开发打包成SO库的话，采用Android Studio+CMake也是十分方便，只需要简单配置CMakeLists.txt：
 
